@@ -1,0 +1,20 @@
+server:
+  port: 10012
+#  向远程github上的配置中心获取配置文件
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          # 地址  /  目录  /用户名  /密码
+          uri: https://github.com/thedevelopmentteam/git
+          search-paths: JS
+          username: 1779905848@qq.com
+          password: fly15617976458
+        default-label: master
+  application:
+    name: CONFIG-SERVER
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10001/eureka/

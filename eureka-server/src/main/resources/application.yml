@@ -1,0 +1,13 @@
+server:
+  port: 10001
+eureka:
+  client:
+    service-url:
+#      对外提供服务注册接口
+      defaultZone: http://127.0.0.1:10001/eureka/
+#      放置注册本身
+    register-with-eureka: false
+    fetch-registry: false
+#    声明实例IP
+  instance:
+    hostname: 127.0.0.1

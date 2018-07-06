@@ -1,0 +1,19 @@
+server:
+    port: 10010
+spring:
+  application:
+    name: ZUUL-CLIENT
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10001/eureka/
+#      网关设置,需要自定义
+zuul:
+  routes:
+    student:
+#      对于 /stu/** 开头的url,会自动转发到 STUDENT-CLIENT的集群上
+      path: /stu/**
+      service-id: STUDENT-CLIENT
+    product:
+      path: /pro/**
+      service-id: PRODUCT-CLIENT

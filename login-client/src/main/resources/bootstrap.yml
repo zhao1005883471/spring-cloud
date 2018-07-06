@@ -1,0 +1,36 @@
+
+spring:
+  application:
+    name: LOGIN-CLIENT
+    # 向配置中心集群上读取配置文件
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: CONFIG-SERVER
+      fail-fast: true
+      # 启用消息总线进行自动刷新
+      bus:
+        enabled: true
+        # 文件后缀 , 构成 spring.application.name + profiles.active 比如 : LOGIN-CLIENT-DEV
+  profiles:
+    active: DEV
+    # 使用消息总线需要结合 mq
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10001/eureka/
+server:
+  port: 10006
+
+# 关闭 信息总线的自我保护机制,不需要权限就能访问 , 地址为: /actuator/bus-refresh  -- post请求
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
