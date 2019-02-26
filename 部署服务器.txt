@@ -1,0 +1,14 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+				服务器部署发布springboot项目
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+工具：传输文件用winscp，命令操作用Xshell
+连接命令：ssh root@172.16.21.161
+密码：csip1024.
+162服务器的密码：DJwXdiFj，用户名同161
+查看项目的进程号：ps aux | grep equipment-center-audit-0.0.1-SNAPSHOT.jar 
+杀死进程：kill -9 14836
+在本地项目的target文件夹下，找到jar包，使用winscp拖拽到服务器覆盖更新
+启动：nohup java -jar product-auth-0.0.1-SNAPSHOT.jar --spring.profiles.active=test &
+
+实时查看log
+tail -f test.log
